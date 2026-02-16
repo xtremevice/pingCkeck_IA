@@ -2,6 +2,12 @@
 
 Esta guía te ayudará a descargar, compilar y ejecutar la aplicación Ping Monitor en Mac con procesador Apple Silicon (M1, M2, M3, etc.).
 
+## ⚠️ IMPORTANTE: Descargar la Rama Correcta
+
+**La aplicación completa está en la rama `copilot/create-ping-app`**, no en la rama principal (main).
+
+Si solo ves el archivo README, consulta: [DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)
+
 ## Requisitos Previos
 
 1. **Instalar .NET 8 SDK**
@@ -33,11 +39,17 @@ Abre la Terminal y ejecuta los siguientes comandos:
 # Navegar a tu carpeta de proyectos (o donde prefieras)
 cd ~/Desktop
 
-# Clonar el repositorio
-git clone https://github.com/xtremevice/pingCkeck_IA.git
+# ⚠️ IMPORTANTE: Clonar la rama correcta con la aplicación
+git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.git
 
 # Entrar al directorio del proyecto
 cd pingCkeck_IA
+```
+
+**Alternativa si ya clonaste sin la rama:**
+```bash
+cd ~/Desktop/pingCkeck_IA
+git checkout copilot/create-ping-app
 ```
 
 ## Paso 2: Compilar la Aplicación
@@ -127,9 +139,9 @@ cloudflare.com
 ## Comandos Completos (Copia y Pega)
 
 ```bash
-# 1. Clonar repositorio
+# 1. Clonar repositorio (⚠️ IMPORTANTE: con la rama correcta)
 cd ~/Desktop
-git clone https://github.com/xtremevice/pingCkeck_IA.git
+git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.git
 cd pingCkeck_IA
 
 # 2. Navegar al proyecto

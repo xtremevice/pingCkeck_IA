@@ -2,9 +2,19 @@
 
 A cross-platform desktop application built with C# .NET Core 8 and Avalonia UI for monitoring network connectivity to multiple sites in real-time.
 
+## ⚠️ IMPORTANTE / IMPORTANT
+
+**🇪🇸 ¿Solo ves este README?** → Ver [DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md) para obtener la aplicación completa.
+
+**🇬🇧 Only seeing this README?** → The full application is in the `copilot/create-ping-app` branch. Clone with:
+```bash
+git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.git
+```
+
 ## 📚 Documentation
 
 - **[INDEX.md](INDEX.md)** - Complete documentation index
+- **[DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)** - 🇪🇸 Guía para descargar la aplicación completa
 - **🇪🇸 Para usuarios de Mac Silicon**: Ver [QUICKSTART_MAC_ES.md](QUICKSTART_MAC_ES.md) para comandos rápidos
 
 ## Screenshot

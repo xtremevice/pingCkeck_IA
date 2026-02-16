@@ -1,11 +1,15 @@
 # Comandos Rápidos - Mac Silicon
 
+## ⚠️ ¿Solo ves el archivo README?
+
+Si solo descargaste el README, necesitas clonar la rama correcta. Ver: [DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)
+
 ## Instalación Rápida (Copia y Pega)
 
 ```bash
-# 1. Clonar el repositorio
+# 1. Clonar el repositorio (RAMA CORRECTA!)
 cd ~/Desktop
-git clone https://github.com/xtremevice/pingCkeck_IA.git
+git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.git
 cd pingCkeck_IA/PingMonitor
 
 # 2. Publicar para Mac Silicon

@@ -1,6 +1,20 @@
 # Índice de Documentación / Documentation Index
 
+## ⚠️ IMPORTANTE: Descargar la Aplicación Completa
+
+**¿Solo ves el archivo README?** Lee esto primero: **[DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)**
+
+La aplicación completa está en la rama `copilot/create-ping-app`. Clónala con:
+```bash
+git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.git
+```
+
+---
+
 ## 🇪🇸 Documentación en Español
+
+### ¡Primero lo Primero!
+- **[DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)** - 🚨 Cómo obtener la aplicación completa (no solo el README)
 
 ### Para Usuarios de Mac Silicon (M1, M2, M3)
 - **[QUICKSTART_MAC_ES.md](QUICKSTART_MAC_ES.md)** - ⚡ Comandos rápidos para instalar y ejecutar
