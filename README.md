@@ -30,6 +30,8 @@ The application provides a clean interface with:
 
 - .NET 8.0 SDK or higher
 
+**For Mac Silicon (Apple M1/M2/M3) users**: See [MAC_SILICON_ES.md](MAC_SILICON_ES.md) for complete installation instructions in Spanish.
+
 ## Building the Application
 
 ```bash
