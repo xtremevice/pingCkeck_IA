@@ -1,0 +1,133 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PingMonitor.ViewModels"
+        xmlns:controls="using:PingMonitor.Controls"
+        xmlns:converters="using:PingMonitor.Converters"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="600"
+        x:Class="PingMonitor.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Ping Monitor"
+        Width="1000" Height="600">
+
+    <Window.Resources>
+        <converters:OnlineStatusToBrushConverter x:Key="OnlineStatusToBrushConverter"/>
+    </Window.Resources>
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <DockPanel Margin="10">
+        <!-- Top panel for adding sites and configuring interval -->
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,10">
+            <TextBlock Text="Ping Monitor" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+            
+            <Grid ColumnDefinitions="*,Auto,Auto,Auto,Auto">
+                <TextBox Grid.Column="0" 
+                         Watermark="Enter URL or IP (e.g., google.com or 8.8.8.8)" 
+                         Text="{Binding NewSiteUrl}" 
+                         Margin="0,0,10,0"/>
+                
+                <Button Grid.Column="1" 
+                        Content="Add Site" 
+                        Command="{Binding AddSiteCommand}"
+                        Margin="0,0,10,0"
+                        Padding="15,5"/>
+                
+                <TextBlock Grid.Column="2" 
+                           Text="Interval (ms):" 
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,0"/>
+                
+                <NumericUpDown Grid.Column="3" 
+                               Value="{Binding PingInterval}"
+                               Minimum="100"
+                               Maximum="10000"
+                               Increment="100"
+                               Width="120"
+                               Margin="0,0,10,0"/>
+                
+                <Button Grid.Column="4" 
+                        Content="Update Interval" 
+                        Command="{Binding UpdateIntervalCommand}"
+                        Padding="15,5"/>
+            </Grid>
+        </StackPanel>
+
+        <!-- List of sites being monitored -->
+        <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5">
+            <ScrollViewer>
+                <ItemsControl ItemsSource="{Binding Sites}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="LightGray" 
+                                    BorderThickness="0,0,0,1" 
+                                    Padding="10"
+                                    Background="Transparent">
+                                <Grid ColumnDefinitions="200,120,120,120,*,80">
+                                    <!-- URL -->
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="{Binding Url}" 
+                                                   FontWeight="Bold"
+                                                   FontSize="14"/>
+                                        <TextBlock Text="{Binding StatusText}" 
+                                                   FontSize="12"
+                                                   Foreground="{Binding IsOnline, Converter={StaticResource OnlineStatusToBrushConverter}}"/>
+                                    </StackPanel>
+
+                                    <!-- Last Ping -->
+                                    <StackPanel Grid.Column="1" Margin="10,0">
+                                        <TextBlock Text="Last" 
+                                                   FontSize="10"
+                                                   Foreground="Gray"/>
+                                        <TextBlock Text="{Binding LastPingMs, StringFormat={}{0} ms}" 
+                                                   FontSize="14"
+                                                   FontWeight="Bold"/>
+                                    </StackPanel>
+
+                                    <!-- Average -->
+                                    <StackPanel Grid.Column="2" Margin="10,0">
+                                        <TextBlock Text="Avg (50)" 
+                                                   FontSize="10"
+                                                   Foreground="Gray"/>
+                                        <TextBlock Text="{Binding AveragePing50, StringFormat={}{0:F1} ms}" 
+                                                   FontSize="14"
+                                                   FontWeight="Bold"/>
+                                    </StackPanel>
+
+                                    <!-- Max -->
+                                    <StackPanel Grid.Column="3" Margin="10,0">
+                                        <TextBlock Text="Max" 
+                                                   FontSize="10"
+                                                   Foreground="Gray"/>
+                                        <TextBlock Text="{Binding MaxPingMs, StringFormat={}{0} ms}" 
+                                                   FontSize="14"
+                                                   FontWeight="Bold"/>
+                                    </StackPanel>
+
+                                    <!-- Mini Graph -->
+                                    <controls:MiniPingGraph Grid.Column="4" 
+                                                           DataPoints="{Binding PingHistoryPoints}"
+                                                           Height="60"
+                                                           Margin="10,0"/>
+
+                                    <!-- Remove Button -->
+                                    <Button Grid.Column="5" 
+                                            Content="Remove"
+                                            Command="{Binding $parent[ItemsControl].((vm:MainWindowViewModel)DataContext).RemoveSiteCommand}"
+                                            CommandParameter="{Binding}"
+                                            VerticalAlignment="Center"
+                                            Padding="10,5"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+    </DockPanel>
+
+</Window>
