@@ -2,6 +2,17 @@
 
 A cross-platform desktop application built with C# .NET Core 8 and Avalonia UI for monitoring network connectivity to multiple sites in real-time.
 
+## 🔄 ACTUALIZAR / UPDATE
+
+**🇪🇸 ¿Ya tienes la aplicación?** → Ver [ACTUALIZAR.md](ACTUALIZAR.md) para comandos de actualización
+
+**🇬🇧 Already have the app?** → See [ACTUALIZAR.md](ACTUALIZAR.md) for update commands
+
+### Comando Rápido para Actualizar (Mac Silicon)
+```bash
+cd ~/Desktop/pingCkeck_IA && git pull && cd PingMonitor && dotnet publish -c Release -r osx-arm64 --self-contained && cd bin/Release/net8.0/osx-arm64/publish/ && chmod +x PingMonitor && ./PingMonitor
+```
+
 ## ⚠️ IMPORTANTE / IMPORTANT
 
 **🇪🇸 ¿Solo ves este README?** → Ver [DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md) para obtener la aplicación completa.
@@ -13,6 +24,7 @@ git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.
 
 ## 📚 Documentation
 
+- **[ACTUALIZAR.md](ACTUALIZAR.md)** - 🔄 **COMANDOS PARA ACTUALIZAR Y EJECUTAR** (Todos los sistemas)
 - **[INDEX.md](INDEX.md)** - Complete documentation index
 - **[COMANDO_MAC_SILICON.md](COMANDO_MAC_SILICON.md)** - 🚀 🇪🇸 **COMANDO RÁPIDO para Mac Silicon - Última Versión**
 - **[DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)** - 🇪🇸 Guía para descargar la aplicación completa

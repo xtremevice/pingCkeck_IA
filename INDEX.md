@@ -1,5 +1,11 @@
 # Índice de Documentación / Documentation Index
 
+## 🔄 ACTUALIZAR LA APLICACIÓN / UPDATE THE APP
+
+**¿Ya tienes la aplicación instalada?** → **[ACTUALIZAR.md](ACTUALIZAR.md)** - Comandos para actualizar y ejecutar la última versión
+
+---
+
 ## ⚠️ IMPORTANTE: Descargar la Aplicación Completa
 
 **¿Solo ves el archivo README?** Lee esto primero: **[DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)**
@@ -14,6 +20,7 @@ git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.
 ## 🇪🇸 Documentación en Español
 
 ### ¡Primero lo Primero!
+- **[ACTUALIZAR.md](ACTUALIZAR.md)** - 🔄 **ACTUALIZAR Y EJECUTAR** - Comandos para todos los sistemas operativos
 - **[DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)** - 🚨 Cómo obtener la aplicación completa (no solo el README)
 
 ### Para Usuarios de Mac Silicon (M1, M2, M3)
@@ -21,8 +28,9 @@ git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.
 - **[QUICKSTART_MAC_ES.md](QUICKSTART_MAC_ES.md)** - ⚡ Comandos rápidos para instalar y ejecutar
 - **[MAC_SILICON_ES.md](MAC_SILICON_ES.md)** - 📖 Guía completa de instalación paso a paso
 
-### Nuevas Características
+### Nuevas Características y Correcciones
 - **[FEATURES_SCATTER_REPORT.md](FEATURES_SCATTER_REPORT.md)** - 📊 Gráfica de dispersión y generación de reportes
+- **[FIXES_GRAFICA_REPORTE.md](FIXES_GRAFICA_REPORTE.md)** - 🔧 Correcciones de visibilidad y formato CSV
 
 ## 🇬🇧 English Documentation
 
