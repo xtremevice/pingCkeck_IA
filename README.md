@@ -2,6 +2,11 @@
 
 A cross-platform desktop application built with C# .NET Core 8 and Avalonia UI for monitoring network connectivity to multiple sites in real-time.
 
+## 📚 Documentation
+
+- **[INDEX.md](INDEX.md)** - Complete documentation index
+- **🇪🇸 Para usuarios de Mac Silicon**: Ver [QUICKSTART_MAC_ES.md](QUICKSTART_MAC_ES.md) para comandos rápidos
+
 ## Screenshot
 
 The application provides a clean interface with:
