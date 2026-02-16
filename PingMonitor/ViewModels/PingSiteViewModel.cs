@@ -34,6 +34,9 @@ public partial class PingSiteViewModel : ViewModelBase
     [ObservableProperty]
     private ObservableCollection<double> _pingHistoryPoints;
 
+    [ObservableProperty]
+    private ObservableCollection<double> _last10PingPoints;
+
     public PingSiteViewModel(string url, int pingIntervalMs)
     {
         _url = url;
@@ -41,6 +44,7 @@ public partial class PingSiteViewModel : ViewModelBase
         _pingService = new PingService();
         _statusText = "Waiting...";
         _pingHistoryPoints = new ObservableCollection<double>();
+        _last10PingPoints = new ObservableCollection<double>();
 
         _pingService.PingResultReceived += OnPingResultReceived;
         _pingService.StartPinging(_model, pingIntervalMs);
@@ -57,11 +61,19 @@ public partial class PingSiteViewModel : ViewModelBase
             IsOnline = site.IsOnline;
             StatusText = site.IsOnline ? $"{site.LastPingMs} ms" : "Offline";
 
-            // Update history points for graph
+            // Update history points for graph (all 50)
             PingHistoryPoints.Clear();
             foreach (var ping in site.PingHistory)
             {
                 PingHistoryPoints.Add(ping);
+            }
+
+            // Update last 10 ping points for scatter graph
+            Last10PingPoints.Clear();
+            var last10 = site.PingHistory.Reverse().Take(10).Reverse();
+            foreach (var ping in last10)
+            {
+                Last10PingPoints.Add(ping);
             }
         });
     }
@@ -74,5 +86,10 @@ public partial class PingSiteViewModel : ViewModelBase
     public void Stop()
     {
         _pingService.StopPinging();
+    }
+
+    public IEnumerable<PingResult> GetPingHistory100()
+    {
+        return _model.PingHistory100.ToList();
     }
 }
