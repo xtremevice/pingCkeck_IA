@@ -2,6 +2,19 @@
 
 A cross-platform desktop application built with C# .NET Core 8 and Avalonia UI for monitoring network connectivity to multiple sites in real-time.
 
+## Screenshot
+
+The application provides a clean interface with:
+- Text box to add new URLs or IP addresses
+- Configurable ping interval control
+- List view showing each monitored site with:
+  - Site URL/IP and online/offline status (green/red)
+  - Last ping time in milliseconds
+  - Average of last 50 pings
+  - Maximum ping time recorded
+  - Real-time mini graph showing ping history
+  - Remove button for each site
+
 ## Features
 
 - **Multi-site monitoring**: Add and monitor multiple URLs or IP addresses simultaneously
@@ -31,6 +44,10 @@ cd PingMonitor
 dotnet run
 ```
 
+## Publishing
+
+See [PUBLISHING.md](PUBLISHING.md) for instructions on how to publish the application for different platforms.
+
 ## Usage
 
 1. **Add a site**: Enter a URL (e.g., `google.com`) or IP address (e.g., `8.8.8.8`) in the text box and click "Add Site"
@@ -52,3 +69,13 @@ This application uses Avalonia UI, which provides native support for:
 - Windows (7+)
 - Linux (with X11 or Wayland)
 - macOS (10.12+)
+
+## Architecture
+
+The application follows the MVVM (Model-View-ViewModel) pattern:
+- **Models**: `PingSiteModel` - Data model for ping statistics
+- **Services**: `PingService` - Background ping execution
+- **ViewModels**: `MainWindowViewModel`, `PingSiteViewModel` - UI logic and data binding
+- **Views**: `MainWindow.axaml` - User interface
+- **Controls**: `MiniPingGraph` - Custom control for visualizing ping history
+

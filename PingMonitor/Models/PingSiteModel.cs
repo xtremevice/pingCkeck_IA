@@ -17,6 +17,7 @@ public class PingSiteModel
     {
         LastPingMs = pingTimeMs;
         LastPingTime = DateTime.Now;
+        IsOnline = true;
         
         if (pingTimeMs > MaxPingMs)
         {
