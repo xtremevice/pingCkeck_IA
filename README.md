@@ -55,6 +55,16 @@ See [PUBLISHING.md](PUBLISHING.md) for instructions on how to publish the applic
 3. **Monitor**: Watch real-time ping statistics and graphs for each site
 4. **Remove sites**: Click the "Remove" button next to any site to stop monitoring it
 
+### Example Sites to Monitor
+
+You can test the application with these commonly used sites:
+- `google.com` - Google's main site
+- `8.8.8.8` - Google's public DNS
+- `1.1.1.1` - Cloudflare's public DNS
+- `github.com` - GitHub
+- `cloudflare.com` - Cloudflare
+- Your local router (e.g., `192.168.1.1`)
+
 ## Features Details
 
 - **Last**: Shows the response time of the most recent ping
