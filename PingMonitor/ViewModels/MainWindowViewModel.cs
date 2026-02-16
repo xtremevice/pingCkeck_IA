@@ -19,6 +19,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private int _pingInterval = 1000;
 
+    [ObservableProperty]
+    private string _reportStatus = string.Empty;
+
     public MainWindowViewModel()
     {
         _sites = new ObservableCollection<PingSiteViewModel>();
@@ -58,8 +61,40 @@ public partial class MainWindowViewModel : ViewModelBase
     private async Task GenerateReport()
     {
         if (!Sites.Any())
+        {
+            ReportStatus = "No sites to report";
             return;
+        }
 
+        try
+        {
+            var timestamp = System.DateTime.Now;
+            var desktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+            
+            // Generate both TXT and CSV reports
+            var txtFileName = $"PingReport_{timestamp:yyyyMMdd_HHmmss}.txt";
+            var csvFileName = $"PingReport_{timestamp:yyyyMMdd_HHmmss}.csv";
+            var txtFilePath = Path.Combine(desktopPath, txtFileName);
+            var csvFilePath = Path.Combine(desktopPath, csvFileName);
+
+            // Generate TXT report
+            var txtContent = GenerateTxtReport();
+            await File.WriteAllTextAsync(txtFilePath, txtContent);
+
+            // Generate CSV report
+            var csvContent = GenerateCsvReport();
+            await File.WriteAllTextAsync(csvFilePath, csvContent);
+
+            ReportStatus = $"Reports saved to Desktop:\n{txtFileName}\n{csvFileName}";
+        }
+        catch (System.Exception ex)
+        {
+            ReportStatus = $"Error saving report: {ex.Message}";
+        }
+    }
+
+    private string GenerateTxtReport()
+    {
         var sb = new StringBuilder();
         sb.AppendLine("Ping Monitor Report");
         sb.AppendLine($"Generated: {System.DateTime.Now:yyyy-MM-dd HH:mm:ss}");
@@ -91,15 +126,31 @@ public partial class MainWindowViewModel : ViewModelBase
             sb.AppendLine();
         }
 
-        // Save to file
-        var fileName = $"PingReport_{System.DateTime.Now:yyyyMMdd_HHmmss}.txt";
-        var desktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
-        var filePath = Path.Combine(desktopPath, fileName);
+        return sb.ToString();
+    }
 
-        await File.WriteAllTextAsync(filePath, sb.ToString());
+    private string GenerateCsvReport()
+    {
+        var sb = new StringBuilder();
+        
+        // CSV Header
+        sb.AppendLine("Site,Timestamp,Ping Time (ms),Status,Current Status,Last Ping,Average (50),Maximum");
 
-        // Note: In a real application, you might want to show a dialog to the user
-        // For now, we'll just write to the desktop
+        foreach (var site in Sites)
+        {
+            var currentStatus = site.IsOnline ? "Online" : "Offline";
+            var history = site.GetPingHistory100();
+            
+            foreach (var result in history)
+            {
+                var status = result.IsSuccess ? "Success" : "Failed";
+                var pingTime = result.IsSuccess ? result.PingTimeMs.ToString() : "";
+                
+                sb.AppendLine($"{site.Url},{result.Timestamp:yyyy-MM-dd HH:mm:ss},{pingTime},{status},{currentStatus},{site.LastPingMs},{site.AveragePing50:F2},{site.MaxPingMs}");
+            }
+        }
+
+        return sb.ToString();
     }
 
     public void Cleanup()

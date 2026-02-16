@@ -61,6 +61,14 @@
                         Command="{Binding GenerateReportCommand}"
                         Padding="15,5"/>
             </Grid>
+            
+            <!-- Report Status Message -->
+            <TextBlock Text="{Binding ReportStatus}" 
+                       Foreground="Green"
+                       FontSize="12"
+                       Margin="0,5,0,0"
+                       TextWrapping="Wrap"
+                       IsVisible="{Binding ReportStatus, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
         </StackPanel>
 
         <!-- List of sites being monitored -->
