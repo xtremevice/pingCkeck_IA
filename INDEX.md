@@ -17,8 +17,12 @@ git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.
 - **[DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)** - 🚨 Cómo obtener la aplicación completa (no solo el README)
 
 ### Para Usuarios de Mac Silicon (M1, M2, M3)
+- **[COMANDO_MAC_SILICON.md](COMANDO_MAC_SILICON.md)** - 🚀 **COMANDO TODO-EN-UNO** - Última versión con un solo comando
 - **[QUICKSTART_MAC_ES.md](QUICKSTART_MAC_ES.md)** - ⚡ Comandos rápidos para instalar y ejecutar
 - **[MAC_SILICON_ES.md](MAC_SILICON_ES.md)** - 📖 Guía completa de instalación paso a paso
+
+### Nuevas Características
+- **[FEATURES_SCATTER_REPORT.md](FEATURES_SCATTER_REPORT.md)** - 📊 Gráfica de dispersión y generación de reportes
 
 ## 🇬🇧 English Documentation
 
