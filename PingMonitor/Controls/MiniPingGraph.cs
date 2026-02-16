@@ -52,20 +52,8 @@ public class MiniPingGraph : Control
         }
 
         var points = DataPoints.ToList();
-        if (points.Count < 2)
-        {
-            // Draw "Need more data" message if less than 2 points
-            var typeface = new Typeface("Arial");
-            var text = new FormattedText(
-                "Need more data",
-                System.Globalization.CultureInfo.CurrentCulture,
-                FlowDirection.LeftToRight,
-                typeface,
-                10,
-                Brushes.Gray);
-            context.DrawText(text, new Point((width - text.Width) / 2, (height - text.Height) / 2));
+        if (points.Count == 0)
             return;
-        }
 
         var maxValue = points.Max();
         
@@ -90,6 +78,15 @@ public class MiniPingGraph : Control
             var x = padding + (i * pointWidth);
             var y = padding + (graphHeight - (points[i] / maxValue * graphHeight));
             polylinePoints.Add(new Point(x, y));
+        }
+
+        // If only one point, draw it as a circle
+        if (points.Count == 1)
+        {
+            var pointBrush = Brushes.DodgerBlue;
+            var pointRadius = 4.0;
+            context.DrawEllipse(pointBrush, new Pen(Brushes.White, 1), polylinePoints[0], pointRadius, pointRadius);
+            return;
         }
 
         // Draw filled area
