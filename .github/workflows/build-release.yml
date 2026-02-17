@@ -1,0 +1,124 @@
+name: Build Multi-Platform Executables
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g., v1.0.0)'
+        required: false
+        default: 'dev-build'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build for ${{ matrix.os }}
+    runs-on: ${{ matrix.runner }}
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        include:
+          # Windows x64
+          - os: windows-x64
+            runner: windows-latest
+            runtime: win-x64
+            artifact_name: PingMonitor-windows-x64
+            executable_name: PingMonitor.exe
+          
+          # Linux x64
+          - os: linux-x64
+            runner: ubuntu-latest
+            runtime: linux-x64
+            artifact_name: PingMonitor-linux-x64
+            executable_name: PingMonitor
+          
+          # macOS Intel (x64)
+          - os: macos-x64
+            runner: macos-latest
+            runtime: osx-x64
+            artifact_name: PingMonitor-macos-intel
+            executable_name: PingMonitor
+          
+          # macOS Apple Silicon (ARM64)
+          - os: macos-arm64
+            runner: macos-latest
+            runtime: osx-arm64
+            artifact_name: PingMonitor-macos-arm64
+            executable_name: PingMonitor
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore PingMonitor/PingMonitor.csproj
+
+      - name: Build application
+        run: dotnet build PingMonitor/PingMonitor.csproj -c Release --no-restore
+
+      - name: Publish self-contained executable
+        run: dotnet publish PingMonitor/PingMonitor.csproj -c Release -r ${{ matrix.runtime }} --self-contained -p:PublishSingleFile=true -p:PublishTrimmed=false -o ./publish
+
+      - name: Set executable permissions (Unix)
+        if: matrix.runner != 'windows-latest'
+        run: chmod +x ./publish/${{ matrix.executable_name }}
+
+      - name: Create archive (Windows)
+        if: matrix.runner == 'windows-latest'
+        run: |
+          Compress-Archive -Path ./publish/* -DestinationPath ${{ matrix.artifact_name }}.zip
+
+      - name: Create archive (Unix)
+        if: matrix.runner != 'windows-latest'
+        run: |
+          cd publish
+          tar -czf ../${{ matrix.artifact_name }}.tar.gz *
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: |
+            ${{ matrix.artifact_name }}.zip
+            ${{ matrix.artifact_name }}.tar.gz
+          if-no-files-found: ignore
+          retention-days: 30
+
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Display structure of downloaded files
+        run: ls -R artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            artifacts/**/*.zip
+            artifacts/**/*.tar.gz
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

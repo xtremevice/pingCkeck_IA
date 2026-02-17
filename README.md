@@ -2,6 +2,31 @@
 
 A cross-platform desktop application built with C# .NET Core 8 and Avalonia UI for monitoring network connectivity to multiple sites in real-time.
 
+## ⚠️ IMPORTANT: Build Scripts Location
+
+**🚨 Note for users trying to use `build-all-platforms.sh`:**
+
+The build automation scripts (`build-all-platforms.sh` and `build-all-platforms.bat`) are located in the `copilot/discuss-executable-creation` branch, NOT in the main branch.
+
+**If you cloned from main and got "no such file or directory":**
+
+```bash
+# Option 1: Switch to the branch with build scripts
+cd pingCkeck_IA
+git fetch origin copilot/discuss-executable-creation
+git checkout copilot/discuss-executable-creation
+./build-all-platforms.sh
+
+# Option 2: Clone the correct branch directly
+git clone -b copilot/discuss-executable-creation https://github.com/xtremevice/pingCkeck_IA.git
+cd pingCkeck_IA
+./build-all-platforms.sh
+```
+
+**For the application code**, use the `copilot/create-ping-app` branch.
+
+---
+
 ## 🔄 ACTUALIZAR / UPDATE
 
 **🇪🇸 ¿Ya tienes la aplicación?** → Ver [ACTUALIZAR.md](ACTUALIZAR.md) para comandos de actualización
@@ -24,6 +49,10 @@ git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.
 
 ## 📚 Documentation
 
+- **[GENERAR_EJECUTABLES.md](GENERAR_EJECUTABLES.md)** - 📦 🇪🇸 **GUÍA COMPLETA: Generar ejecutables para todas las plataformas**
+- **[EXECUTABLE_GENERATION.md](EXECUTABLE_GENERATION.md)** - 📦 🇬🇧 **COMPLETE GUIDE: Generate executables for all platforms**
+- **[MAC_REQUISITOS_EJECUTABLE_UNICO.md](MAC_REQUISITOS_EJECUTABLE_UNICO.md)** - 🍎 🇪🇸 **Mac: Requisitos para ejecutable de un solo archivo**
+- **[MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md)** - 🚀 🇪🇸 **Mac Silicon: Obtener última versión y compilar para TODAS las plataformas**
 - **[ACTUALIZAR.md](ACTUALIZAR.md)** - 🔄 **COMANDOS PARA ACTUALIZAR Y EJECUTAR** (Todos los sistemas)
 - **[MERGE_COMMANDS.md](MERGE_COMMANDS.md)** - 🔀 **COMANDOS PARA MERGE CON MAIN** (Fusionar ramas)
 - **[WIKI_UPLOAD.md](WIKI_UPLOAD.md)** - 📚 **SUBIR DOCUMENTACIÓN AL WIKI** (GitHub Wiki)
@@ -76,9 +105,27 @@ cd PingMonitor
 dotnet run
 ```
 
-## Publishing
+## Building Executables for Distribution
 
-See [PUBLISHING.md](PUBLISHING.md) for instructions on how to publish the application for different platforms.
+### Quick Build (All Platforms)
+
+**Windows:**
+```cmd
+build-all-platforms.bat
+```
+
+**Linux/macOS:**
+```bash
+./build-all-platforms.sh
+```
+
+This will generate self-contained executables for Windows, Linux, macOS Intel, and macOS Apple Silicon.
+
+### Complete Guide
+
+- **🇪🇸 Español**: See [GENERAR_EJECUTABLES.md](GENERAR_EJECUTABLES.md) for complete guide on generating executables
+- **🇬🇧 English**: See [EXECUTABLE_GENERATION.md](EXECUTABLE_GENERATION.md) for complete guide on generating executables
+- **Basic instructions**: See [PUBLISHING.md](PUBLISHING.md) for basic publishing commands
 
 ## Usage
 

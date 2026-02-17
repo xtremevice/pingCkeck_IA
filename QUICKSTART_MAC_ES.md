@@ -1,5 +1,28 @@
 # Comandos Rápidos - Mac Silicon
 
+## 💡 ¿Quieres Compilar para TODAS las Plataformas?
+
+Si necesitas generar ejecutables para **Windows, Linux, macOS Intel Y macOS Apple Silicon** desde tu Mac, ve a:
+
+**👉 [MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md)**
+
+**⚠️ IMPORTANTE:** El script `build-all-platforms.sh` está en la rama `copilot/discuss-executable-creation`.
+
+**Comando rápido para compilar todas las plataformas (en rama correcta):**
+```bash
+cd ~/Desktop/pingCkeck_IA && git checkout copilot/discuss-executable-creation && git pull && ./build-all-platforms.sh
+```
+
+**Si clonaste desde main, primero cambia de rama:**
+```bash
+cd ~/Desktop/pingCkeck_IA
+git fetch origin copilot/discuss-executable-creation
+git checkout copilot/discuss-executable-creation
+./build-all-platforms.sh
+```
+
+---
+
 ## ⚠️ ¿Solo ves el archivo README?
 
 Si solo descargaste el README, necesitas clonar la rama correcta. Ver: [DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)
@@ -39,6 +62,40 @@ dotnet --version  # Debe mostrar 8.0.xxx
 ```
 
 ## Solución Rápida de Problemas
+
+### Si obtienes "no such file or directory: ./build-all-platforms.sh":
+
+**🚨 CAUSA MÁS COMÚN:** Clonaste la rama `main` que NO tiene el script.
+
+```bash
+# Verificar rama actual
+git branch
+
+# Si no estás en "copilot/discuss-executable-creation", cambia:
+git fetch origin copilot/discuss-executable-creation
+git checkout copilot/discuss-executable-creation
+
+# Verificar que el script existe
+ls build-all-platforms.sh
+
+# Ejecutar
+./build-all-platforms.sh
+```
+
+Si aún no funciona:
+```bash
+# Verifica dónde está el repositorio
+ls ~/Desktop/pingCkeck_IA/build-all-platforms.sh
+
+# Si no está ahí, búscalo
+find ~ -name "build-all-platforms.sh" 2>/dev/null
+
+# Navega al directorio correcto antes de ejecutar
+cd ~/Desktop/pingCkeck_IA
+./build-all-platforms.sh
+```
+
+Ver solución completa en: [MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md#-solución-de-problemas)
 
 ### Si dice "developer cannot be verified":
 ```bash

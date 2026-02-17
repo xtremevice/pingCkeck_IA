@@ -23,11 +23,16 @@ git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.
 - **[ACTUALIZAR.md](ACTUALIZAR.md)** - 🔄 **ACTUALIZAR Y EJECUTAR** - Comandos para todos los sistemas operativos
 - **[DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)** - 🚨 Cómo obtener la aplicación completa (no solo el README)
 
+### Generación de Ejecutables y Distribución
+- **[GENERAR_EJECUTABLES.md](GENERAR_EJECUTABLES.md)** - 📦 **GUÍA COMPLETA** - Cómo generar ejecutables para todas las plataformas
+
 ### Para Desarrolladores y Colaboradores
 - **[MERGE_COMMANDS.md](MERGE_COMMANDS.md)** - 🔀 **COMANDOS DE MERGE** - Fusionar rama copilot/create-ping-app con main
 - **[WIKI_UPLOAD.md](WIKI_UPLOAD.md)** - 📚 **SUBIR AL WIKI** - Cómo subir documentación al Wiki de GitHub
 
 ### Para Usuarios de Mac Silicon (M1, M2, M3)
+- **[MAC_REQUISITOS_EJECUTABLE_UNICO.md](MAC_REQUISITOS_EJECUTABLE_UNICO.md)** - 🍎 **NUEVO:** Requisitos Mac para generar ejecutable de un solo archivo
+- **[MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md)** - 🚀 Obtener última versión y compilar para TODAS las plataformas
 - **[COMANDO_MAC_SILICON.md](COMANDO_MAC_SILICON.md)** - 🚀 **COMANDO TODO-EN-UNO** - Última versión con un solo comando
 - **[QUICKSTART_MAC_ES.md](QUICKSTART_MAC_ES.md)** - ⚡ Comandos rápidos para instalar y ejecutar
 - **[MAC_SILICON_ES.md](MAC_SILICON_ES.md)** - 📖 Guía completa de instalación paso a paso
@@ -42,11 +47,23 @@ git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.
 - **[README.md](README.md)** - Main documentation, features, and usage
 - **[PUBLISHING.md](PUBLISHING.md)** - Publishing instructions for all platforms
 
+### Executable Generation & Distribution
+- **[EXECUTABLE_GENERATION.md](EXECUTABLE_GENERATION.md)** - 📦 **COMPLETE GUIDE** - How to generate executables for all platforms
+
 ### Technical
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** - Technical architecture and design patterns
 - **[UI_LAYOUT.md](UI_LAYOUT.md)** - User interface layout and design
 
 ## 🚀 Quick Start by Platform
+
+### All Platforms at Once
+```bash
+# Linux/macOS
+./build-all-platforms.sh
+
+# Windows
+build-all-platforms.bat
+```
 
 ### Windows
 ```bash
@@ -83,13 +100,15 @@ chmod +x PingMonitor
 ./PingMonitor
 ```
 
-Ver guía completa: [MAC_SILICON_ES.md](MAC_SILICON_ES.md)
+Ver guía completa: [MAC_SILICON_ES.md](MAC_SILICON_ES.md) | [GENERAR_EJECUTABLES.md](GENERAR_EJECUTABLES.md)
 
 ## 📋 Documentation Summary
 
 | File | Language | Purpose | Audience |
 |------|----------|---------|----------|
 | README.md | English | Main documentation | All users |
+| GENERAR_EJECUTABLES.md | Spanish | Executable generation guide | Developers/Distributors |
+| EXECUTABLE_GENERATION.md | English | Executable generation guide | Developers/Distributors |
 | QUICKSTART_MAC_ES.md | Spanish | Quick commands | Mac Silicon users |
 | MAC_SILICON_ES.md | Spanish | Complete guide | Mac Silicon users |
 | PUBLISHING.md | English | Publishing guide | Developers |

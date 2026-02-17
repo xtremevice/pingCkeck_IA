@@ -1,5 +1,15 @@
 # 🚀 Comando Rápido para Mac Silicon - Última Versión
 
+## 💡 ¿Quieres Generar Ejecutables para TODAS las Plataformas?
+
+**Nuevo:** Si necesitas generar ejecutables para Windows, Linux, macOS Intel Y macOS Apple Silicon desde tu Mac, ve a:
+
+**👉 [MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md) - Guía Completa para Compilar Todas las Plataformas**
+
+**⚠️ NOTA IMPORTANTE:** Los scripts de compilación (`build-all-platforms.sh`) están en la rama `copilot/discuss-executable-creation`, no en `main`.
+
+---
+
 ## 🔄 Actualizar a la Última Versión (Si Ya Tienes la App)
 
 **¿Ya instalaste la aplicación antes?** Usa este comando para actualizar:
@@ -65,6 +75,34 @@ cd ~/Desktop/pingCkeck_IA/PingMonitor/bin/Release/net8.0/osx-arm64/publish/
 
 ## Problemas Comunes
 
+### "no such file or directory: ./build-all-platforms.sh"
+
+**🚨 CAUSA MÁS COMÚN:** El script está en la rama `copilot/discuss-executable-creation`, no en `main`.
+
+```bash
+# Verificar rama actual
+git branch
+
+# Cambiar a la rama correcta
+cd ~/Desktop/pingCkeck_IA
+git fetch origin copilot/discuss-executable-creation
+git checkout copilot/discuss-executable-creation
+
+# Verificar que el script existe
+ls build-all-platforms.sh
+
+# Ejecutar
+./build-all-platforms.sh
+```
+
+Si el archivo aún no existe:
+```bash
+# Busca el repositorio
+find ~ -name "pingCkeck_IA" -type d 2>/dev/null
+```
+
+Ver [MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md#-solución-de-problemas) para más detalles.
+
 ### "developer cannot be verified"
 ```bash
 xattr -d com.apple.quarantine ~/Desktop/pingCkeck_IA/PingMonitor/bin/Release/net8.0/osx-arm64/publish/PingMonitor
@@ -75,6 +113,7 @@ Instala .NET 8 SDK y reinicia la Terminal.
 
 ## Documentación Completa
 
+- **[MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md)** - 🚀 **NUEVO:** Generar ejecutables para todas las plataformas
 - **[ACTUALIZAR.md](ACTUALIZAR.md)** - 🔄 Comandos para actualizar y ejecutar
 - **Guía detallada**: [MAC_SILICON_ES.md](MAC_SILICON_ES.md)
 - **Comandos rápidos**: [QUICKSTART_MAC_ES.md](QUICKSTART_MAC_ES.md)
