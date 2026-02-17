@@ -11,10 +11,15 @@ on:
         required: false
         default: 'dev-build'
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build for ${{ matrix.os }}
     runs-on: ${{ matrix.runner }}
+    permissions:
+      contents: read
     strategy:
       matrix:
         include:
@@ -94,6 +99,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
     
     steps:
       - name: Download all artifacts
