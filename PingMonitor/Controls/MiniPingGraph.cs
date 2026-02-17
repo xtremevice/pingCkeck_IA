@@ -52,33 +52,35 @@ public class MiniPingGraph : Control
         }
 
         var points = DataPoints.ToList();
-        if (points.Count < 2)
-        {
-            // Draw "Need more data" message if less than 2 points
-            var typeface = new Typeface("Arial");
-            var text = new FormattedText(
-                "Need more data",
-                System.Globalization.CultureInfo.CurrentCulture,
-                FlowDirection.LeftToRight,
-                typeface,
-                10,
-                Brushes.Gray);
-            context.DrawText(text, new Point((width - text.Width) / 2, (height - text.Height) / 2));
+        if (points.Count == 0)
             return;
-        }
-
-        var maxValue = points.Max();
-        
-        if (maxValue == 0)
-            maxValue = 1;
-
-        var pen = new Pen(Brushes.LightBlue, 2);
-        var fillBrush = new SolidColorBrush(Color.FromArgb(50, 173, 216, 230));
 
         // Add padding
         var padding = 5.0;
         var graphWidth = width - (padding * 2);
         var graphHeight = height - (padding * 2);
+
+        // If only one point, draw it as a circle
+        if (points.Count == 1)
+        {
+            var maxValue = points[0] > 0 ? points[0] : 1;
+            var y = padding + (graphHeight - (points[0] / maxValue * graphHeight));
+            var x = padding + (graphWidth / 2); // Center the point
+            
+            var pointBrush = Brushes.DodgerBlue;
+            var pointRadius = 4.0;
+            context.DrawEllipse(pointBrush, new Pen(Brushes.White, 1), new Point(x, y), pointRadius, pointRadius);
+            return;
+        }
+
+        // For multiple points
+        var maxValue2 = points.Max();
+        
+        if (maxValue2 == 0)
+            maxValue2 = 1;
+
+        var pen = new Pen(Brushes.LightBlue, 2);
+        var fillBrush = new SolidColorBrush(Color.FromArgb(50, 173, 216, 230));
 
         var pointWidth = graphWidth / Math.Max(points.Count - 1, 1);
 
@@ -88,7 +90,7 @@ public class MiniPingGraph : Control
         for (int i = 0; i < points.Count; i++)
         {
             var x = padding + (i * pointWidth);
-            var y = padding + (graphHeight - (points[i] / maxValue * graphHeight));
+            var y = padding + (graphHeight - (points[i] / maxValue2 * graphHeight));
             polylinePoints.Add(new Point(x, y));
         }
 

@@ -81,7 +81,7 @@
                                     BorderThickness="0,0,0,1" 
                                     Padding="10"
                                     Background="Transparent">
-                                <Grid ColumnDefinitions="200,120,120,120,*,100,80">
+                                <Grid ColumnDefinitions="200,120,120,120,*,80">
                                     <!-- URL -->
                                     <StackPanel Grid.Column="0">
                                         <TextBlock Text="{Binding Url}" 
@@ -128,15 +128,8 @@
                                                            Height="60"
                                                            Margin="10,0"/>
 
-                                    <!-- Mini Scatter Graph (Last 10 Points) -->
-                                    <controls:MiniScatterGraph Grid.Column="5" 
-                                                              DataPoints="{Binding Last10PingPoints}"
-                                                              Height="60"
-                                                              Width="90"
-                                                              Margin="10,0"/>
-
                                     <!-- Remove Button -->
-                                    <Button Grid.Column="6" 
+                                    <Button Grid.Column="5"
                                             Content="Remove"
                                             Command="{Binding $parent[ItemsControl].((vm:MainWindowViewModel)DataContext).RemoveSiteCommand}"
                                             CommandParameter="{Binding}"
