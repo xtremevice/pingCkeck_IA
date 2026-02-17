@@ -53,6 +53,21 @@ dotnet --version  # Debe mostrar 8.0.xxx
 
 ## Solución Rápida de Problemas
 
+### Si obtienes "no such file or directory: ./build-all-platforms.sh":
+```bash
+# Verifica dónde está el repositorio
+ls ~/Desktop/pingCkeck_IA/build-all-platforms.sh
+
+# Si no está ahí, búscalo
+find ~ -name "build-all-platforms.sh" 2>/dev/null
+
+# Navega al directorio correcto antes de ejecutar
+cd ~/Desktop/pingCkeck_IA
+./build-all-platforms.sh
+```
+
+Ver solución completa en: [MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md#-solución-de-problemas)
+
 ### Si dice "developer cannot be verified":
 ```bash
 xattr -d com.apple.quarantine PingMonitor

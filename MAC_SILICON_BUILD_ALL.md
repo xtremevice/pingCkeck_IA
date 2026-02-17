@@ -55,12 +55,37 @@ cd pingCkeck_IA
 
 ## ⚡ Comando Completo (Todo en Uno)
 
-### Si Ya Tienes el Repositorio Clonado:
+### ⚠️ Antes de Empezar - Verifica tu Ubicación
 
-Copia y pega este comando en tu Terminal para **actualizar a la última versión** y **generar todos los ejecutables**:
+Si obtienes un error como `no such file or directory`, es porque no estás en el directorio correcto. Primero verifica:
 
 ```bash
+# ¿Dónde está el repositorio?
+find ~ -name "pingCkeck_IA" -type d 2>/dev/null | head -1
+
+# O si sabes que está en el Desktop
+ls ~/Desktop/pingCkeck_IA/build-all-platforms.sh
+```
+
+Si el comando anterior muestra la ruta del script, usa esa ubicación en los comandos siguientes.
+
+### Si Ya Tienes el Repositorio Clonado:
+
+**Opción A - Si está en el Desktop (ubicación recomendada):**
+```bash
 cd ~/Desktop/pingCkeck_IA && git pull && ./build-all-platforms.sh
+```
+
+**Opción B - Si clonaste en otra ubicación:**
+```bash
+# Reemplaza /tu/ruta con la ubicación real del repositorio
+cd /tu/ruta/pingCkeck_IA && git pull && ./build-all-platforms.sh
+```
+
+**Opción C - Si no sabes dónde está:**
+```bash
+# Este comando encuentra y entra al repositorio automáticamente
+cd $(find ~ -name "pingCkeck_IA" -type d 2>/dev/null | head -1) && git pull && ./build-all-platforms.sh
 ```
 
 ### Si Es tu Primera Vez:
@@ -81,10 +106,36 @@ cd ~/Desktop && git clone https://github.com/xtremevice/pingCkeck_IA.git && cd p
 
 Si prefieres ejecutar los comandos uno por uno para entender el proceso:
 
+### 0. Verificar que Tienes el Repositorio (Importante ⚠️)
+
+**Antes de continuar, verifica que el repositorio existe:**
+
+```bash
+# Verificar si el repositorio está en el Desktop
+ls ~/Desktop/pingCkeck_IA
+
+# O buscar el repositorio en todo el sistema
+find ~ -name "pingCkeck_IA" -type d 2>/dev/null
+```
+
+Si no existe, primero **clónalo**:
+```bash
+cd ~/Desktop
+git clone https://github.com/xtremevice/pingCkeck_IA.git
+```
+
 ### 1. Navegar al Directorio del Repositorio
 
 ```bash
 cd ~/Desktop/pingCkeck_IA
+```
+
+**Verificar que estás en el lugar correcto:**
+```bash
+# Este comando debe mostrar el script
+ls build-all-platforms.sh
+
+# Si ves "build-all-platforms.sh", estás en el lugar correcto ✅
 ```
 
 ### 2. Obtener la Última Versión
@@ -106,6 +157,8 @@ O mostrará los archivos actualizados si hay cambios.
 ```bash
 ./build-all-platforms.sh
 ```
+
+**Si obtienes "no such file or directory"**, significa que no estás en el directorio correcto. Vuelve al paso 0 y 1.
 
 **¿Qué hace este script?**
 1. Verifica que .NET SDK esté instalado
@@ -257,6 +310,56 @@ All builds completed successfully!
 
 ## ❓ Solución de Problemas
 
+### Error: "no such file or directory: ./build-all-platforms.sh"
+
+**Causa:** Estás en el directorio incorrecto o el repositorio no está clonado.
+
+**Solución 1 - Verificar ubicación del repositorio:**
+```bash
+# Buscar el repositorio en tu sistema
+find ~ -name "build-all-platforms.sh" -type f 2>/dev/null
+
+# O buscar la carpeta del repositorio
+find ~ -name "pingCkeck_IA" -type d 2>/dev/null
+```
+
+**Solución 2 - Navegar al directorio correcto:**
+```bash
+# Si clonaste en el Desktop (ubicación recomendada)
+cd ~/Desktop/pingCkeck_IA
+
+# Verificar que estás en el lugar correcto
+ls -la build-all-platforms.sh
+
+# Si el archivo existe, ahora puedes ejecutar
+./build-all-platforms.sh
+```
+
+**Solución 3 - Si clonaste en otra ubicación:**
+```bash
+# Reemplaza /ruta/a/tu con la ruta real donde clonaste
+cd /ruta/a/tu/pingCkeck_IA
+./build-all-platforms.sh
+```
+
+**Solución 4 - Si el repositorio no está clonado:**
+```bash
+# Clonar en el Desktop
+cd ~/Desktop
+git clone https://github.com/xtremevice/pingCkeck_IA.git
+cd pingCkeck_IA
+./build-all-platforms.sh
+```
+
+**Verificación rápida - ¿Estás en el directorio correcto?**
+```bash
+# Este comando debe mostrar el script
+ls -la build-all-platforms.sh
+
+# Este comando debe mostrar "pingCkeck_IA"
+basename $(pwd)
+```
+
 ### Error: "Permission denied" al ejecutar el script
 
 **Solución:**
@@ -340,6 +443,19 @@ Ver: [COMANDO_MAC_SILICON.md](COMANDO_MAC_SILICON.md) para más opciones solo de
 
 ## 🎓 Comandos de Referencia Rápida
 
+### ⚠️ Nota Importante
+Estos comandos asumen que el repositorio está en `~/Desktop/pingCkeck_IA`. Si lo clonaste en otra ubicación, reemplaza `~/Desktop/pingCkeck_IA` con tu ruta real.
+
+**Encontrar tu repositorio:**
+```bash
+# Buscar el repositorio
+find ~ -name "pingCkeck_IA" -type d 2>/dev/null | head -1
+
+# Guardar la ruta en una variable para uso fácil
+REPO_PATH=$(find ~ -name "pingCkeck_IA" -type d 2>/dev/null | head -1)
+cd "$REPO_PATH"
+```
+
 ### Actualizar y Compilar Todo
 ```bash
 cd ~/Desktop/pingCkeck_IA && git pull && ./build-all-platforms.sh
@@ -368,6 +484,15 @@ cd ~/Desktop/pingCkeck_IA && git status
 ### Ver Últimos Cambios
 ```bash
 cd ~/Desktop/pingCkeck_IA && git log --oneline -10
+```
+
+### Verificar que Estás en el Directorio Correcto
+```bash
+# Debe mostrar "pingCkeck_IA"
+basename $(pwd)
+
+# Debe mostrar el script
+ls build-all-platforms.sh
 ```
 
 ---

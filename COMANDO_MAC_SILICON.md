@@ -73,6 +73,21 @@ cd ~/Desktop/pingCkeck_IA/PingMonitor/bin/Release/net8.0/osx-arm64/publish/
 
 ## Problemas Comunes
 
+### "no such file or directory: ./build-all-platforms.sh"
+```bash
+# Verifica que estás en el directorio correcto
+ls ~/Desktop/pingCkeck_IA/build-all-platforms.sh
+
+# Si el archivo existe, navega ahí
+cd ~/Desktop/pingCkeck_IA
+./build-all-platforms.sh
+
+# Si no existe, busca el repositorio
+find ~ -name "pingCkeck_IA" -type d 2>/dev/null
+```
+
+Ver [MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md#-solución-de-problemas) para más detalles.
+
 ### "developer cannot be verified"
 ```bash
 xattr -d com.apple.quarantine ~/Desktop/pingCkeck_IA/PingMonitor/bin/Release/net8.0/osx-arm64/publish/PingMonitor
