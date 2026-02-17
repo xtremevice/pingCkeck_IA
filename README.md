@@ -24,6 +24,8 @@ git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.
 
 ## 📚 Documentation
 
+- **[GENERAR_EJECUTABLES.md](GENERAR_EJECUTABLES.md)** - 📦 🇪🇸 **GUÍA COMPLETA: Generar ejecutables para todas las plataformas**
+- **[EXECUTABLE_GENERATION.md](EXECUTABLE_GENERATION.md)** - 📦 🇬🇧 **COMPLETE GUIDE: Generate executables for all platforms**
 - **[ACTUALIZAR.md](ACTUALIZAR.md)** - 🔄 **COMANDOS PARA ACTUALIZAR Y EJECUTAR** (Todos los sistemas)
 - **[MERGE_COMMANDS.md](MERGE_COMMANDS.md)** - 🔀 **COMANDOS PARA MERGE CON MAIN** (Fusionar ramas)
 - **[WIKI_UPLOAD.md](WIKI_UPLOAD.md)** - 📚 **SUBIR DOCUMENTACIÓN AL WIKI** (GitHub Wiki)
@@ -76,9 +78,27 @@ cd PingMonitor
 dotnet run
 ```
 
-## Publishing
+## Building Executables for Distribution
 
-See [PUBLISHING.md](PUBLISHING.md) for instructions on how to publish the application for different platforms.
+### Quick Build (All Platforms)
+
+**Windows:**
+```cmd
+build-all-platforms.bat
+```
+
+**Linux/macOS:**
+```bash
+./build-all-platforms.sh
+```
+
+This will generate self-contained executables for Windows, Linux, macOS Intel, and macOS Apple Silicon.
+
+### Complete Guide
+
+- **🇪🇸 Español**: See [GENERAR_EJECUTABLES.md](GENERAR_EJECUTABLES.md) for complete guide on generating executables
+- **🇬🇧 English**: See [EXECUTABLE_GENERATION.md](EXECUTABLE_GENERATION.md) for complete guide on generating executables
+- **Basic instructions**: See [PUBLISHING.md](PUBLISHING.md) for basic publishing commands
 
 ## Usage
 
