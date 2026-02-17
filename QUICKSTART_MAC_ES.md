@@ -1,5 +1,18 @@
 # Comandos Rápidos - Mac Silicon
 
+## 💡 ¿Quieres Compilar para TODAS las Plataformas?
+
+Si necesitas generar ejecutables para **Windows, Linux, macOS Intel Y macOS Apple Silicon** desde tu Mac, ve a:
+
+**👉 [MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md)**
+
+**Comando rápido para compilar todas las plataformas:**
+```bash
+cd ~/Desktop/pingCkeck_IA && git pull && ./build-all-platforms.sh
+```
+
+---
+
 ## ⚠️ ¿Solo ves el archivo README?
 
 Si solo descargaste el README, necesitas clonar la rama correcta. Ver: [DESCARGAR_APLICACION.md](DESCARGAR_APLICACION.md)
