@@ -134,6 +134,8 @@ El workflow creará automáticamente:
    dotnet --version
    # Debe mostrar 8.0.x o superior
    ```
+   
+   **Para usuarios de Mac:** Ver guía específica en **[MAC_REQUISITOS_EJECUTABLE_UNICO.md](MAC_REQUISITOS_EJECUTABLE_UNICO.md)** con requisitos detallados para generar ejecutables de un solo archivo en macOS.
 
 2. **Acceso de lectura/escritura** en el directorio del proyecto
 

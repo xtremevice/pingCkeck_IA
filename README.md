@@ -51,6 +51,7 @@ git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.
 
 - **[GENERAR_EJECUTABLES.md](GENERAR_EJECUTABLES.md)** - 📦 🇪🇸 **GUÍA COMPLETA: Generar ejecutables para todas las plataformas**
 - **[EXECUTABLE_GENERATION.md](EXECUTABLE_GENERATION.md)** - 📦 🇬🇧 **COMPLETE GUIDE: Generate executables for all platforms**
+- **[MAC_REQUISITOS_EJECUTABLE_UNICO.md](MAC_REQUISITOS_EJECUTABLE_UNICO.md)** - 🍎 🇪🇸 **Mac: Requisitos para ejecutable de un solo archivo**
 - **[MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md)** - 🚀 🇪🇸 **Mac Silicon: Obtener última versión y compilar para TODAS las plataformas**
 - **[ACTUALIZAR.md](ACTUALIZAR.md)** - 🔄 **COMANDOS PARA ACTUALIZAR Y EJECUTAR** (Todos los sistemas)
 - **[MERGE_COMMANDS.md](MERGE_COMMANDS.md)** - 🔀 **COMANDOS PARA MERGE CON MAIN** (Fusionar ramas)

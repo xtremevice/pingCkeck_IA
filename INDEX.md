@@ -31,7 +31,8 @@ git clone -b copilot/create-ping-app https://github.com/xtremevice/pingCkeck_IA.
 - **[WIKI_UPLOAD.md](WIKI_UPLOAD.md)** - 📚 **SUBIR AL WIKI** - Cómo subir documentación al Wiki de GitHub
 
 ### Para Usuarios de Mac Silicon (M1, M2, M3)
-- **[MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md)** - 🚀 **NUEVO:** Obtener última versión y compilar para TODAS las plataformas
+- **[MAC_REQUISITOS_EJECUTABLE_UNICO.md](MAC_REQUISITOS_EJECUTABLE_UNICO.md)** - 🍎 **NUEVO:** Requisitos Mac para generar ejecutable de un solo archivo
+- **[MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md)** - 🚀 Obtener última versión y compilar para TODAS las plataformas
 - **[COMANDO_MAC_SILICON.md](COMANDO_MAC_SILICON.md)** - 🚀 **COMANDO TODO-EN-UNO** - Última versión con un solo comando
 - **[QUICKSTART_MAC_ES.md](QUICKSTART_MAC_ES.md)** - ⚡ Comandos rápidos para instalar y ejecutar
 - **[MAC_SILICON_ES.md](MAC_SILICON_ES.md)** - 📖 Guía completa de instalación paso a paso
