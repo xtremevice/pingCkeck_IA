@@ -6,6 +6,8 @@
 
 **👉 [MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md) - Guía Completa para Compilar Todas las Plataformas**
 
+**⚠️ NOTA IMPORTANTE:** Los scripts de compilación (`build-all-platforms.sh`) están en la rama `copilot/discuss-executable-creation`, no en `main`.
+
 ---
 
 ## 🔄 Actualizar a la Última Versión (Si Ya Tienes la App)
@@ -74,15 +76,28 @@ cd ~/Desktop/pingCkeck_IA/PingMonitor/bin/Release/net8.0/osx-arm64/publish/
 ## Problemas Comunes
 
 ### "no such file or directory: ./build-all-platforms.sh"
+
+**🚨 CAUSA MÁS COMÚN:** El script está en la rama `copilot/discuss-executable-creation`, no en `main`.
+
 ```bash
-# Verifica que estás en el directorio correcto
-ls ~/Desktop/pingCkeck_IA/build-all-platforms.sh
+# Verificar rama actual
+git branch
 
-# Si el archivo existe, navega ahí
+# Cambiar a la rama correcta
 cd ~/Desktop/pingCkeck_IA
-./build-all-platforms.sh
+git fetch origin copilot/discuss-executable-creation
+git checkout copilot/discuss-executable-creation
 
-# Si no existe, busca el repositorio
+# Verificar que el script existe
+ls build-all-platforms.sh
+
+# Ejecutar
+./build-all-platforms.sh
+```
+
+Si el archivo aún no existe:
+```bash
+# Busca el repositorio
 find ~ -name "pingCkeck_IA" -type d 2>/dev/null
 ```
 

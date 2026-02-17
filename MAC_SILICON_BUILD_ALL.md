@@ -41,14 +41,28 @@ git --version
 
 Si no está instalado, se instalará automáticamente al intentar usarlo por primera vez en macOS.
 
-### 3. Repositorio Clonado
+### 3. Repositorio Clonado EN LA RAMA CORRECTA ⚠️
 
-Si aún no has clonado el repositorio:
+**MUY IMPORTANTE:** El script `build-all-platforms.sh` está en la rama `copilot/discuss-executable-creation`, NO en la rama `main`.
+
+Si aún no has clonado el repositorio, **clona la rama correcta**:
 
 ```bash
 cd ~/Desktop
-git clone https://github.com/xtremevice/pingCkeck_IA.git
+# IMPORTANTE: Clonar la rama con los scripts de compilación
+git clone -b copilot/discuss-executable-creation https://github.com/xtremevice/pingCkeck_IA.git
 cd pingCkeck_IA
+```
+
+**Si ya clonaste desde main y obtienes "no such file or directory":**
+
+```bash
+cd ~/Desktop/pingCkeck_IA
+# Cambiar a la rama correcta
+git fetch origin copilot/discuss-executable-creation
+git checkout copilot/discuss-executable-creation
+# Ahora el script existe
+ls build-all-platforms.sh
 ```
 
 ---
@@ -71,28 +85,32 @@ Si el comando anterior muestra la ruta del script, usa esa ubicación en los com
 
 ### Si Ya Tienes el Repositorio Clonado:
 
-**Opción A - Si está en el Desktop (ubicación recomendada):**
+**Opción A - Si está en el Desktop Y en la rama correcta:**
 ```bash
-cd ~/Desktop/pingCkeck_IA && git pull && ./build-all-platforms.sh
+cd ~/Desktop/pingCkeck_IA && git checkout copilot/discuss-executable-creation && git pull && ./build-all-platforms.sh
 ```
 
 **Opción B - Si clonaste en otra ubicación:**
 ```bash
 # Reemplaza /tu/ruta con la ubicación real del repositorio
-cd /tu/ruta/pingCkeck_IA && git pull && ./build-all-platforms.sh
+cd /tu/ruta/pingCkeck_IA && git checkout copilot/discuss-executable-creation && git pull && ./build-all-platforms.sh
 ```
 
 **Opción C - Si no sabes dónde está:**
 ```bash
 # Este comando encuentra y entra al repositorio automáticamente
-cd $(find ~ -name "pingCkeck_IA" -type d 2>/dev/null | head -1) && git pull && ./build-all-platforms.sh
+cd $(find ~ -name "pingCkeck_IA" -type d 2>/dev/null | head -1) && git checkout copilot/discuss-executable-creation && git pull && ./build-all-platforms.sh
 ```
 
 ### Si Es tu Primera Vez:
 
+**⚠️ IMPORTANTE: Debes clonar la rama correcta que contiene los scripts de compilación:**
+
 ```bash
-cd ~/Desktop && git clone https://github.com/xtremevice/pingCkeck_IA.git && cd pingCkeck_IA && ./build-all-platforms.sh
+cd ~/Desktop && git clone -b copilot/discuss-executable-creation https://github.com/xtremevice/pingCkeck_IA.git && cd pingCkeck_IA && ./build-all-platforms.sh
 ```
+
+**Nota:** El comando incluye `-b copilot/discuss-executable-creation` para clonar la rama que contiene `build-all-platforms.sh`.
 
 **¡Eso es todo!** El script generará ejecutables para:
 - ✅ Windows (x64)
@@ -312,7 +330,25 @@ All builds completed successfully!
 
 ### Error: "no such file or directory: ./build-all-platforms.sh"
 
-**Causa:** Estás en el directorio incorrecto o el repositorio no está clonado.
+**🚨 CAUSA MÁS COMÚN:** Clonaste desde la rama `main` que NO contiene los scripts de compilación.
+
+**Solución 0 - Verificar y cambiar a la rama correcta (MÁS COMÚN):**
+```bash
+# Verificar en qué rama estás
+git branch
+
+# Si ves "* main" o no ves "copilot/discuss-executable-creation", necesitas cambiar:
+git fetch origin copilot/discuss-executable-creation
+git checkout copilot/discuss-executable-creation
+
+# Ahora verifica que el script existe
+ls -la build-all-platforms.sh
+
+# Si lo ves, ejecuta
+./build-all-platforms.sh
+```
+
+**Causa alternativa:** Estás en el directorio incorrecto o el repositorio no está clonado.
 
 **Solución 1 - Verificar ubicación del repositorio:**
 ```bash
@@ -342,17 +378,21 @@ cd /ruta/a/tu/pingCkeck_IA
 ./build-all-platforms.sh
 ```
 
-**Solución 4 - Si el repositorio no está clonado:**
+**Solución 4 - Si el repositorio no está clonado o clonaste la rama incorrecta:**
 ```bash
-# Clonar en el Desktop
+# Clonar la rama correcta con los scripts de compilación
 cd ~/Desktop
-git clone https://github.com/xtremevice/pingCkeck_IA.git
+git clone -b copilot/discuss-executable-creation https://github.com/xtremevice/pingCkeck_IA.git
 cd pingCkeck_IA
+ls build-all-platforms.sh  # Verificar que existe
 ./build-all-platforms.sh
 ```
 
-**Verificación rápida - ¿Estás en el directorio correcto?**
+**Verificación rápida - ¿Estás en la rama correcta?**
 ```bash
+# Ver rama actual (debe mostrar "copilot/discuss-executable-creation")
+git branch
+
 # Este comando debe mostrar el script
 ls -la build-all-platforms.sh
 

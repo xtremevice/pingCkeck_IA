@@ -2,6 +2,17 @@
 
 Este documento explica cómo generar ejecutables de la aplicación PingMonitor para diferentes plataformas y sistemas operativos.
 
+## ⚠️ IMPORTANTE: Ubicación de los Scripts
+
+Los scripts de compilación automatizados (`build-all-platforms.sh` y `build-all-platforms.bat`) están ubicados en la rama **`copilot/discuss-executable-creation`**, NO en la rama `main`.
+
+**Si obtienes el error "no such file or directory":**
+1. Verifica tu rama actual: `git branch`
+2. Cambia a la rama correcta: `git checkout copilot/discuss-executable-creation`
+3. O clona directamente esta rama: `git clone -b copilot/discuss-executable-creation https://github.com/xtremevice/pingCkeck_IA.git`
+
+---
+
 ## 📋 Tabla de Contenidos
 
 - [¿Qué son los Ejecutables?](#qué-son-los-ejecutables)

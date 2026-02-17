@@ -6,9 +6,19 @@ Si necesitas generar ejecutables para **Windows, Linux, macOS Intel Y macOS Appl
 
 **👉 [MAC_SILICON_BUILD_ALL.md](MAC_SILICON_BUILD_ALL.md)**
 
-**Comando rápido para compilar todas las plataformas:**
+**⚠️ IMPORTANTE:** El script `build-all-platforms.sh` está en la rama `copilot/discuss-executable-creation`.
+
+**Comando rápido para compilar todas las plataformas (en rama correcta):**
 ```bash
-cd ~/Desktop/pingCkeck_IA && git pull && ./build-all-platforms.sh
+cd ~/Desktop/pingCkeck_IA && git checkout copilot/discuss-executable-creation && git pull && ./build-all-platforms.sh
+```
+
+**Si clonaste desde main, primero cambia de rama:**
+```bash
+cd ~/Desktop/pingCkeck_IA
+git fetch origin copilot/discuss-executable-creation
+git checkout copilot/discuss-executable-creation
+./build-all-platforms.sh
 ```
 
 ---
@@ -54,6 +64,25 @@ dotnet --version  # Debe mostrar 8.0.xxx
 ## Solución Rápida de Problemas
 
 ### Si obtienes "no such file or directory: ./build-all-platforms.sh":
+
+**🚨 CAUSA MÁS COMÚN:** Clonaste la rama `main` que NO tiene el script.
+
+```bash
+# Verificar rama actual
+git branch
+
+# Si no estás en "copilot/discuss-executable-creation", cambia:
+git fetch origin copilot/discuss-executable-creation
+git checkout copilot/discuss-executable-creation
+
+# Verificar que el script existe
+ls build-all-platforms.sh
+
+# Ejecutar
+./build-all-platforms.sh
+```
+
+Si aún no funciona:
 ```bash
 # Verifica dónde está el repositorio
 ls ~/Desktop/pingCkeck_IA/build-all-platforms.sh

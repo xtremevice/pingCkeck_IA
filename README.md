@@ -2,6 +2,31 @@
 
 A cross-platform desktop application built with C# .NET Core 8 and Avalonia UI for monitoring network connectivity to multiple sites in real-time.
 
+## ⚠️ IMPORTANT: Build Scripts Location
+
+**🚨 Note for users trying to use `build-all-platforms.sh`:**
+
+The build automation scripts (`build-all-platforms.sh` and `build-all-platforms.bat`) are located in the `copilot/discuss-executable-creation` branch, NOT in the main branch.
+
+**If you cloned from main and got "no such file or directory":**
+
+```bash
+# Option 1: Switch to the branch with build scripts
+cd pingCkeck_IA
+git fetch origin copilot/discuss-executable-creation
+git checkout copilot/discuss-executable-creation
+./build-all-platforms.sh
+
+# Option 2: Clone the correct branch directly
+git clone -b copilot/discuss-executable-creation https://github.com/xtremevice/pingCkeck_IA.git
+cd pingCkeck_IA
+./build-all-platforms.sh
+```
+
+**For the application code**, use the `copilot/create-ping-app` branch.
+
+---
+
 ## 🔄 ACTUALIZAR / UPDATE
 
 **🇪🇸 ¿Ya tienes la aplicación?** → Ver [ACTUALIZAR.md](ACTUALIZAR.md) para comandos de actualización
